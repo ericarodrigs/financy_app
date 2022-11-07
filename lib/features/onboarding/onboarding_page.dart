@@ -4,6 +4,8 @@ import 'package:estudos/core/constants/app_colors.dart';
 import 'package:estudos/core/constants/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/widgets/my_button.dart';
+
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
 
@@ -15,7 +17,6 @@ class OnboardingPage extends StatelessWidget {
           Expanded(
             flex: 5,
             child: Container(
-              height: 150,
               color: AppColors.iceWhite,
               child: Padding(
                 padding: const EdgeInsets.only(top: 60),
@@ -43,22 +44,8 @@ class OnboardingPage extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  SizedBox(
-                    width: 358,
-                    height: 64,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.greenLightTwo,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40)),
-                        ),
-                        onPressed: () {},
-                        child: Text(
-                          'Get Started',
-                          style: AppTextStyles.intermediaryText
-                              .copyWith(color: AppColors.white),
-                        )),
-                  ),
+                  MyButton(text: 'Get Started',
+                  onTap: (){},),
                   const SizedBox(
                     height: 16,
                   ),
