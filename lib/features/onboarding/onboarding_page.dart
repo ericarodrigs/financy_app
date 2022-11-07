@@ -1,9 +1,11 @@
-import 'dart:math';
+import 'dart:developer';
 
 import 'package:estudos/core/constants/app_colors.dart';
 import 'package:estudos/core/constants/app_text_styles.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/widgets/multi_text_button.dart';
 import '../../core/widgets/my_button.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -12,66 +14,52 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.iceWhite,
       body: Column(
         children: [
           Expanded(
-            flex: 5,
-            child: Container(
-              color: AppColors.iceWhite,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 60),
-                child: Image.asset('assets/images/onboarding.png'),
-              ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 60),
+              child: Image.asset('assets/images/onboarding.png'),
             ),
           ),
-          Expanded(
-              flex: 2,
-              child: Column(
+          Column(
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Spend Smarter \n Save More',
+                textAlign: TextAlign.center,
+                style: AppTextStyles.mediumText
+                    .copyWith(color: AppColors.greenLightTwo),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              MyButton(
+                text: 'Get Started',
+                onTap: () {
+                  log('message');
+                },
+              ),
+              MultiTextButton(
+                onTap: () => log('message'),
                 children: [
-                  const SizedBox(
-                    height: 20,
+                  Text(
+                    'Already have an account? ',
+                    style: AppTextStyles.smallText
+                        .copyWith(color: AppColors.grey),
                   ),
                   Text(
-                    'Spend Smarter',
-                    style: AppTextStyles.mediumText
+                    ' Log In',
+                    style: AppTextStyles.smallText
                         .copyWith(color: AppColors.greenLightTwo),
-                  ),
-                  Text(
-                    'Save More',
-                    style: AppTextStyles.mediumText
-                        .copyWith(color: AppColors.greenLightTwo),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  MyButton(text: 'Get Started',
-                  onTap: (){},),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 30.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Already have an account?',
-                          style: AppTextStyles.smallText
-                              .copyWith(color: AppColors.grey),
-                        ),
-                        const SizedBox(
-                          width: 6,
-                        ),
-                        Text(
-                          'Log In',
-                          style: AppTextStyles.smallText
-                              .copyWith(color: AppColors.greenLightTwo),
-                        ),
-                      ],
-                    ),
                   ),
                 ],
-              ))
+              ),
+            ],
+          ),
         ],
       ),
     );
